@@ -17,4 +17,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Semua user login
+Route::middleware(['auth'])->group(function () {
+
+    // Owner & Manager
+    Route::get('/laporan', function () {
+        return "Halaman Laporan";
+    })->middleware('role:owner,manager');
+
+    // Kasir
+    Route::get('/transaksi', function () {
+        return "Halaman Transaksi";
+    })->middleware('role:kasir');
+
+});
+
+
 require __DIR__.'/auth.php';
