@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+{{-- <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -97,4 +97,62 @@
             </div>
         </div>
     </div>
+</nav> --}}
+<nav class="flex-1 px-2 space-y-1">
+
+    <a href="{{ route('dashboard') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('dashboard') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-gauge mr-2"></i> Dashboard
+    </a>
+
+    <a href="{{ route('transaksi') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('transaksi') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-coins mr-2"></i> Transaksi
+    </a>
+
+    <a href="{{ route('produk') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('produk') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-warehouse mr-2"></i> Produk / Gudang
+    </a>
+
+    <a href="{{ route('cabang') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('cabang') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-store  mr-2"></i> Cabang
+    </a>
+
+    <a href="{{ route('laporan') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('laporan') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-file mr-2"></i> Laporan
+    </a>
+
+    <a href="{{ route('users') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('users') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-users mr-2"></i> User Management
+    </a>
+
+    <a href="{{ route('profile.edit') }}"
+        class="block px-4 py-2 rounded 
+        {{ request()->routeIs('profile.edit') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        <i class="fa-solid fa-user mr-2"></i> Profile
+    </a>
+
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <button type="submit"
+                class="w-full text-left px-4 py-2 rounded hover:bg-red-600 hover:text-white text-red-400">
+                <i class="fa-solid fa-arrow-right-from-bracket mr-2"></i> Log Out
+            </button>
+        </form>
+    </form>
+
 </nav>
