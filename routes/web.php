@@ -3,11 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -23,14 +20,21 @@ Route::middleware(['auth'])->group(function () {
     // Owner & Manager
     Route::get('/laporan', function () {
         return "Halaman Laporan";
-    })->middleware('role:owner,manager');
+    })->middleware('role:owner,manager')->name('laporan');
 
     // Kasir
     Route::get('/transaksi', function () {
         return "Halaman Transaksi";
-    })->middleware('role:kasir');
+    })->middleware('role:kasir')->name('transaksi');
+
+    Route::get('/cabang', function () {
+        return "Halaman Laporan";
+    })->middleware('role:owner,manager')->name('cabang');
 
 });
+
+Route::get('/produk', fn() => view('produk'))->name('produk');
+Route::get('/users', fn() => view('users'))->name('users');
 
 
 require __DIR__.'/auth.php';
