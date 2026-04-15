@@ -29,9 +29,6 @@ Route::middleware(['auth'])->group(function () {
         return "Halaman Transaksi";
     })->middleware('role:kasir')->name('transaksi');
 
-    // Route::get('/cabang', function () {
-    //     return "Halaman Laporan";
-    // })->middleware('role:owner,manager')->name('cabang');
 
     Route::get('/cabang', [CabangController::class, 'index'])
         ->middleware('role:owner,manager')
