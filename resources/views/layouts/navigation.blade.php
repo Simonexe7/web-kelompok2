@@ -118,9 +118,9 @@
         <i class="fa-solid fa-warehouse mr-2"></i> Produk / Gudang
     </a>
 
-    <a href="{{ route('cabang') }}"
+    <a href="{{ route('cabang.index') }}"
         class="block px-4 py-2 rounded 
-        {{ request()->routeIs('cabang') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+        {{ request()->routeIs('cabang.index') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
         <i class="fa-solid fa-store  mr-2"></i> Cabang
     </a>
 
