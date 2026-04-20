@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CabangController;
-
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,9 +25,19 @@ Route::middleware(['auth'])->group(function () {
     })->middleware('role:owner,manager')->name('laporan');
 
     // Kasir
-    Route::get('/transaksi', function () {
-        return "Halaman Transaksi";
-    })->middleware('role:kasir')->name('transaksi');
+    // Route::get('/transaksi', function () {
+    //     return "Halaman Transaksi";
+    // })->middleware('role:kasir')->name('transaksi');
+
+    Route::get('/transaksi/create', [TransaksiController::class, 'create'])
+        ->middleware('role:kasir')
+        ->name('transaksi.create');
+
+    Route::post('/transaksi', [TransaksiController::class, 'store'])
+        ->middleware('role:kasir')
+        ->name('transaksi.store');
+
+
 
     // Route::get('/cabang', function () {
     //     return "Halaman Laporan";

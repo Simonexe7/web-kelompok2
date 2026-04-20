@@ -106,7 +106,7 @@
         <i class="fa-solid fa-gauge mr-2"></i> Dashboard
     </a>
 
-    <a href="{{ route('transaksi') }}"
+    <a href="{{ route('transaksi.create') }}"
         class="block px-4 py-2 rounded 
         {{ request()->routeIs('transaksi') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
         <i class="fa-solid fa-coins mr-2"></i> Transaksi
