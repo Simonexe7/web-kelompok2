@@ -74,5 +74,37 @@
         </main>
     </div>
     </div>
+
+    <div 
+        x-data="{ show: false, message: '', type: 'success' }"
+        x-init="
+            @if(session('success'))
+                show = true;
+                message = '{{ session('success') }}';
+                type = 'success';
+            @elseif(session('error'))
+                show = true;
+                message = '{{ session('error') }}';
+                type = 'error';
+            @endif
+
+            setTimeout(() => show = false, 3000)
+        "
+        x-show="show"
+        x-transition
+        class="fixed top-5 right-5 z-50">
+
+        <div 
+            :class="type === 'success' 
+                ? 'bg-green-500' 
+                : 'bg-red-500'"
+            class="text-white px-5 py-3 rounded-lg shadow-lg">
+
+            <span x-text="message"></span>
+
+        </div>
+
+    </div>
+
     </body>
 </html>
