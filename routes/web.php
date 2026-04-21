@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\TransaksiController;
@@ -24,11 +25,6 @@ Route::middleware(['auth'])->group(function () {
         return "Halaman Laporan";
     })->middleware('role:owner,manager')->name('laporan');
 
-    // Kasir
-    // Route::get('/transaksi', function () {
-    //     return "Halaman Transaksi";
-    // })->middleware('role:kasir')->name('transaksi');
-
     Route::get('/transaksi/create', [TransaksiController::class, 'create'])
         ->middleware('role:kasir')
         ->name('transaksi.create');
@@ -36,7 +32,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transaksi', [TransaksiController::class, 'store'])
         ->middleware('role:kasir')
         ->name('transaksi.store');
-
 
 
     // Route::get('/cabang', function () {
@@ -70,9 +65,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/cabang/{cabang}', [CabangController::class, 'destroy'])
         ->middleware('role:owner,manager')
         ->name('cabang.destroy');
+
+    Route::resource('barang', BarangController::class)
+        ->middleware('role:owner,manager');
+
 });
 
-Route::get('/produk', fn() => view('produk'))->name('produk');
+// Route::get('/produk', fn() => view('produk'))->name('produk');
 Route::get('/users', fn() => view('users'))->name('users');
 
 
