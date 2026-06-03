@@ -65,7 +65,7 @@
                             
                             {{ $barang->stok }}
                         </span>
-                    </td>
+                </td>
 
                     <!-- ACTION -->
                     <td class="text-right space-x-2">
