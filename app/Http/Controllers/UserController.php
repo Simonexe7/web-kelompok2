@@ -36,7 +36,8 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('user.index');
+        return redirect()->route('users.index')
+        ->with('success', 'User berhasil ditambahkan');
     }
 
     /**
@@ -68,7 +69,8 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('user.index');
+        return redirect()->route('users.index')
+        ->with('success', 'User berhasil diperbarui');
     }
 
     /**
@@ -76,6 +78,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index')
+            ->with('success', 'User berhasil dihapus');
     }
 }
