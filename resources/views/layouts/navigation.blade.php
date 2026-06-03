@@ -130,7 +130,7 @@
         <i class="fa-solid fa-file mr-2"></i> Laporan
     </a>
 
-    <a href="{{ route('users') }}"
+    <a href="{{ route('users.index') }}"
         class="block px-4 py-2 rounded 
         {{ request()->routeIs('users') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
         <i class="fa-solid fa-users mr-2"></i> User Management

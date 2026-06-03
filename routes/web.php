@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -69,10 +70,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('barang', BarangController::class)
         ->middleware('role:owner,manager');
 
+    Route::resource('users', UserController::class)
+    ->middleware('role:owner');
+
 });
 
 // Route::get('/produk', fn() => view('produk'))->name('produk');
-Route::get('/users', fn() => view('users'))->name('users');
+//Route::get('/users', fn() => view('users'))->name('users');
 
 
 
