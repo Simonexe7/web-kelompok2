@@ -7,6 +7,7 @@ use App\Http\Controllers\CabangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -84,10 +85,13 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('role:owner,manager')
         ->name('laporan.show');
     
+    Route::resource('users', UserController::class)
+    ->middleware('role:owner');
+
 });
 
 // Route::get('/produk', fn() => view('produk'))->name('produk');
-Route::get('/users', fn() => view('users'))->name('users');
+//Route::get('/users', fn() => view('users'))->name('users');
 
 
 
