@@ -6,7 +6,6 @@
                 class="text-blue-600 hover:text-blue-800 text-xl">
                     <i class="fas fa-arrow-left"></i>
                 </a>
-
                 <h2 class="font-semibold text-xl text-gray-800">
                     Edit User
                 </h2>
