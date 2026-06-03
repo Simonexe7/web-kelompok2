@@ -1,11 +1,14 @@
 <?php
 
+use App\Exports\LaporanExport;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -69,6 +72,18 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('barang', BarangController::class)
         ->middleware('role:owner,manager');
 
+    Route::get('/laporan', [LaporanController::class, 'index'])
+        ->middleware('role:owner,manager')
+        ->name('laporan.index');
+        
+    Route::get('/laporan/export', function (Request $request) {
+        return Excel::download(new LaporanExport($request), 'laporan.xlsx');
+    })->name('laporan.export');
+    
+    Route::get('/laporan/{id}', [LaporanController::class, 'show'])
+        ->middleware('role:owner,manager')
+        ->name('laporan.show');
+    
 });
 
 // Route::get('/produk', fn() => view('produk'))->name('produk');
