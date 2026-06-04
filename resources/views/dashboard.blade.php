@@ -5,13 +5,50 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Selamat Datang!") }}
-                </div>
-            </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+        <!-- Barang -->
+        <div class="bg-white rounded-2xl shadow p-6">
+            <p class="text-gray-500 text-sm">
+                Total Barang
+            </p>
+
+            <h3 class="text-3xl font-bold mt-2">
+                {{ $jumlahBarang }}
+            </h3>
         </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+            <p class="text-gray-500 text-sm">
+                Total Cabang
+            </p>
+
+            <h3 class="text-3xl font-bold mt-2">
+                {{ $jumlahCabang }}
+            </h3>
+        </div>
+
+        <!-- Transaksi -->
+        <div class="bg-white rounded-2xl shadow p-6">
+            <p class="text-gray-500 text-sm">
+                Total Transaksi
+            </p>
+
+            <h3 class="text-3xl font-bold mt-2">
+                {{ $jumlahTransaksi }}
+            </h3>
+        </div>
+
+        <!-- User -->
+        <div class="bg-white rounded-2xl shadow p-6">
+            <p class="text-gray-500 text-sm">
+                Total User
+            </p>
+
+            <h3 class="text-3xl font-bold mt-2">
+                {{ $jumlahUser }}
+            </h3>
+        </div>
+
     </div>
 </x-app-layout>

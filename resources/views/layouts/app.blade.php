@@ -52,7 +52,6 @@
         <div class="p-4 border-t border-gray-700">
             <div class="text-sm mb-3">
                 <div>{{ auth()->user()->name }}</div>
-                <div class="text-gray-400 text-xs">Cabang A</div>
             </div>
         </div>
 

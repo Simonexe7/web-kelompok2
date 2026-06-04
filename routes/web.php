@@ -4,6 +4,7 @@ use App\Exports\LaporanExport;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CabangController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Request;
@@ -11,9 +12,9 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Maatwebsite\Excel\Facades\Excel;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,11 +24,6 @@ Route::middleware('auth')->group(function () {
 
 // Semua user login
 Route::middleware(['auth'])->group(function () {
-
-    // Owner & Manager
-    Route::get('/laporan', function () {
-        return "Halaman Laporan";
-    })->middleware('role:owner,manager')->name('laporan');
 
     Route::get('/transaksi/create', [TransaksiController::class, 'create'])
         ->middleware('role:kasir')
