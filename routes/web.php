@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('cabang.destroy');
 
     Route::resource('barang', BarangController::class)
-        ->middleware('role:owner,manager');
+        ->middleware('role:gudang');
 
     Route::get('/laporan', [LaporanController::class, 'index'])
         ->middleware('role:owner,manager')
